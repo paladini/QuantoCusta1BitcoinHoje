@@ -19,6 +19,7 @@
 	"manifest_version": 2,
 	"permissions": [
 		"alarms",
+		"tabs",
 		"https://*/",
 		"https://api.blinktrade.com/"
 	]

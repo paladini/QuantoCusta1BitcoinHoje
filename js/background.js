@@ -15,9 +15,8 @@ function readTicker() {
 				var resp = JSON.parse(response);
 
 				// Preparando o texto a ser impresso
-				var textToPrint = "Um Bitcoin hoje custa R$";
 				var amount = resp["last"];
-				textToPrint = ""+amount.toPrecision(3);
+				var badgeText = ""+amount.toPrecision(3);
 				
 				// Determina cor de fundo do "badge"
 				if (amount>value){
@@ -28,7 +27,7 @@ function readTicker() {
 				value = amount;
 				
 				// Setando texto
-				chrome.browserAction.setBadgeText({text: textToPrint});
+				chrome.browserAction.setBadgeText({text: badgeText});
 			}
 		}
 	}
@@ -48,6 +47,11 @@ chrome.runtime.onMessage.addListener(
 			sendResponse({data: response});
 	}
 );
+
+// Abrindo página da Foxbit ao clicar no ícone.
+chrome.browserAction.onClicked.addListener(function(tab) {
+  chrome.tabs.create({'url': "http://www.foxbit.com.br"});
+});
 
 // Criando alarme para atualizar a cada 1 minuto.
 chrome.alarms.create('refresh', {periodInMinutes: 1.0});
