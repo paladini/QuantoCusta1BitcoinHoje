@@ -16,7 +16,7 @@ function readTicker() {
 
 				// Preparando o texto a ser impresso
 				var amount = resp["last"];
-				var badgeText = ""+amount.toPrecision(3);
+				var badgeText = "" + amount.toPrecision(3);
 				
 				// Determina cor de fundo do "badge"
 				if (amount>value){
@@ -26,8 +26,9 @@ function readTicker() {
 				}
 				value = amount;
 				
-				// Setando texto
+				// Setando texto no Badge
 				chrome.browserAction.setBadgeText({text: badgeText});
+				chrome.browserAction.setTitle({title: "O preço de 1 bitcoin agora é R$" + value + "."});
 			}
 		}
 	}
