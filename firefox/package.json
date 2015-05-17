@@ -1,0 +1,14 @@
+{
+  "name": "quanto_custa_1_bitcoin_hoje",
+  "title": "Quanto Custa 1 Bitcoin Hoje?",
+  "id": "jid1-6F77g2mVq1yL8A",
+  "description": "Saiba o preço atualizado do Bitcoin no Brasil direto do seu Firefox!",
+  "author": "Fernando Paladini",
+  "license": "MIT",
+  "version": "0.1",
+  "homepage": "https://github.com/paladini/QuantoCusta1BitcoinHoje",
+  "permissions": {
+    "cross-domain-content": ["https://api.blinktrade.com", "http://api.blinktrade.com"]
+  },
+  "icon": "data/BC_Logo_.png" 
+}
