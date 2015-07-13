@@ -16,7 +16,13 @@ function readTicker() {
 
 				// Preparando o texto a ser impresso
 				var amount = resp["last"];
-				var badgeText = "" + amount.toPrecision(3);
+				var amountPos = String(amount).indexOf('.');
+
+				if( (amountPos != -1) && (amountPos < 4) ) {
+					badgeText = "" + amount.toPrecision(3);
+				} else {
+					badgeText = "" + amount.toPrecision(4);
+				}
 				
 				// Determina cor de fundo do "badge"
 				if (amount>value){
