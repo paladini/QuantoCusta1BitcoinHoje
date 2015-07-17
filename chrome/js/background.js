@@ -18,7 +18,7 @@ function readTicker() {
 				var amount = resp["last"];
 				var amountPos = String(amount).indexOf('.');
 
-				if( (amountPos != -1) && (amountPos < 4) ) {
+				if( (amountPos == -1) || (amountPos < 4) ) {
 					badgeText = "" + amount.toPrecision(3);
 				} else {
 					badgeText = "" + amount.toPrecision(4);
@@ -34,7 +34,7 @@ function readTicker() {
 				
 				// Setando texto no Badge
 				chrome.browserAction.setBadgeText({text: badgeText});
-				chrome.browserAction.setTitle({title: "O preço de 1 bitcoin agora é R$" + value + "."});
+				chrome.browserAction.setTitle({title: "O preço de 1 bitcoin agora é R$" + value});
 			}
 		}
 	}
