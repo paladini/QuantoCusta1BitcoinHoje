@@ -5,7 +5,7 @@
   "description": "Saiba o preço atualizado do Bitcoin no Brasil direto do seu Firefox!",
   "author": "Fernando Paladini",
   "license": "MIT",
-  "version": "0.1",
+  "version": "0.3",
   "homepage": "https://github.com/paladini/QuantoCusta1BitcoinHoje",
   "permissions": {
     "cross-domain-content": ["https://api.blinktrade.com", "http://api.blinktrade.com"]

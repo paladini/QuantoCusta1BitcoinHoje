@@ -38,11 +38,19 @@ function readTicker() {
 				// Preparando o texto a ser impresso
 				var amount = resp["last"];
 				var amountPos = String(amount).indexOf('.');
-
-				if( (amountPos == -1) || (amountPos < 4) ) {
-					badgeText = "" + amount.toPrecision(3);
+				
+				// Detect the number of digits of the price.
+				var size = 0;
+				if (amountPos != -1) {
+					size = (amount + '').substring(0, amountPos).length;
 				} else {
-					badgeText = "" + amount.toPrecision(4);
+					size = (amount + '').length;				
+				}
+
+				if (size >= 5) { // Can't show more than 4 digits in Firefox badge.
+					badgeText = "9999";
+				} else {
+					badgeText = "" + amount.toPrecision(size);
 				}
 				
 				// Determina cor de fundo do "badge"
