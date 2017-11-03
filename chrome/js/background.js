@@ -14,11 +14,11 @@ function readTicker() {
 				response = xhr.responseText;
 				var resp = JSON.parse(response);
 
-				// Preparando o texto a ser impresso
-				var amount = resp["last"];
+				// Preparando o texto a ser impresso no badge (sem casas decimais).
+				var amount = Number(resp["last"]).toFixed(0);
 				
 				// Fazendo localização para moeda e padrão de números brasileiro
-				var cotacao = parseFloat(amount.toPrecision()).toLocaleString('pt-BR');
+				var cotacao = parseFloat(resp["last"].toPrecision()).toLocaleString('pt-BR');
 				
 				// Adiciona vírgula no final do valor monetário do Bitcoin (somente caso falte).
 				if (cotacao.indexOf(",") == -1) {
