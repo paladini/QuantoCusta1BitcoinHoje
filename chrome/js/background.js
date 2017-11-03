@@ -1,6 +1,12 @@
 var value = 0.0;
 var response = "";
 
+// function numberToReal(numero) {
+//     var numero = numero.toFixed(2).split('.');
+//     numero[0] = "R$ " + numero[0].split(/(?=(?:...)*$)/).join('.');
+//     return numero.join(',');
+// }
+
 function readTicker() {
 	
 	// Consultando API da Foxbit
@@ -16,13 +22,11 @@ function readTicker() {
 
 				// Preparando o texto a ser impresso
 				var amount = resp["last"];
-				var amountPos = String(amount).indexOf('.');
-
-				if( (amountPos == -1) || (amountPos < 4) ) {
-					badgeText = "" + amount.toPrecision(3);
-				} else {
-					badgeText = "" + amount.toPrecision(4);
-				}
+				
+				// Substituindo ponto por virgula no final do preco
+				// var cotacao = numberToReal(amount.toPrecision());
+				var cotacao = (amount.toPrecision()).toLocaleString('pt-BR');
+				// alert(typeof amount.toPrecision() === 'number');
 				
 				// Determina cor de fundo do "badge"
 				if (amount>value){
@@ -33,8 +37,8 @@ function readTicker() {
 				value = amount;
 				
 				// Setando texto no Badge
-				chrome.browserAction.setBadgeText({text: badgeText});
-				chrome.browserAction.setTitle({title: "O preço de 1 bitcoin agora é R$" + value});
+				chrome.browserAction.setBadgeText({text: String(amount)});
+				chrome.browserAction.setTitle({title: "O preço de 1 bitcoin agora é R$" + cotacao});
 			}
 		}
 	}
