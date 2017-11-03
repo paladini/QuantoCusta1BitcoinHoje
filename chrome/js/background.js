@@ -17,9 +17,14 @@ function readTicker() {
 				// Preparando o texto a ser impresso
 				var amount = resp["last"];
 				
-				// Substituindo ponto por virgula no final do preco
+				// Fazendo localização para moeda e padrão de números brasileiro
 				var cotacao = parseFloat(amount.toPrecision()).toLocaleString('pt-BR');
 				
+				// Adiciona vírgula no final do valor monetário do Bitcoin (somente caso falte).
+				if (cotacao.indexOf(",") == -1) {
+					cotacao = cotacao + ",00";
+				}
+
 				// Determina cor de fundo do "badge"
 				if (amount>value){
 					chrome.browserAction.setBadgeBackgroundColor({color: "#00CC00"});
