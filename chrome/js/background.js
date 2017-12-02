@@ -15,9 +15,9 @@ function readTicker() {
 
 				// Preparando o texto a ser impresso no badge (sem casas decimais).
 				var amount = Number(resp["last"]).toFixed(0);
-				console.log(amount);
+
 				amount = abbrNum(amount,1);
-				console.log(amount);
+
 				// Fazendo localização para moeda e padrão de números brasileiro
 				var cotacao = parseFloat(resp["last"].toPrecision()).toLocaleString('pt-BR');
 				
